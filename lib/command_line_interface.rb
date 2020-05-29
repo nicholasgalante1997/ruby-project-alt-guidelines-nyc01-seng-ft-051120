@@ -39,6 +39,10 @@ class CommandLineInterface
     puts book.page_count
   end
 
+  def immediate_follow_up_of_second_query_with_book_comments
+    puts "And even though you didn't ask, we felt it was important to supply yourself with comments that other readers (like yourself) left for this book."
+    puts "To find who left the comment, just type in the ID number next to reader_id."
+  end
 
   def run
     greet_and_author_query
@@ -50,6 +54,8 @@ class CommandLineInterface
     num = resp_.to_i
     book = Book.find(num)
     show_book_info(book)
+    immediate_follow_up_of_second_query_with_book_comments
+    pp book.comments
   end
 
 end
