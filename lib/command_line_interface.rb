@@ -3,7 +3,10 @@ class CommandLineInterface
 
   def greet
     puts "Welcome to Mibrary, your personal library app!"
-    puts "Would you like to search for an Author or a Book?"
+    puts "Lets get started- Are you a new or returning user?"
+    puts "1. New"
+    puts "2. Returning"
+    puts "Please select either 1 or 2."
   end
 
   def book_query
@@ -19,6 +22,7 @@ class CommandLineInterface
   def show_books(books)
 
     books.each do |book|
+    puts ""
     puts book.title
     puts ""
     puts book.id
@@ -58,6 +62,19 @@ class CommandLineInterface
 
   def run
   greet
+  new_or_return_response = gets.strip.to_i
+  if new_or_return_response == 1
+    puts "Please enter a username."
+    username = gets.strip.to_s
+    user = Reader.create(name: username)
+    p user
+  else
+    puts "What is your username?"
+    username = gets.strip.to_s
+    user = Reader.find_by(name: username)
+    p user
+  end
+  puts "Would you wanna search for like- an author or like a book? What are ya in the mood for?"
   initial_branch = gets.strip
   if initial_branch == "Author" || initial_branch == "author"
     author_query
@@ -71,6 +88,7 @@ class CommandLineInterface
     show_book_info(book)
     immediate_follow_up_of_second_query_with_book_comments
     pp book.comments
+    p book.reader.name
   elsif initial_branch == "Book" || initial_branch == 'book'
     book_query
     book_title = gets.chomp.to_s
@@ -91,6 +109,7 @@ class CommandLineInterface
     show_book_info(book)
     immediate_follow_up_of_second_query_with_book_comments
     pp book.comments
+    p book.reader.name
   else
     "Looks like you didn't enter a viable search. Go take this time to google what 'viable' means and come back with renewed ambition."
   end
