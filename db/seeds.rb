@@ -46,3 +46,9 @@ comment_02 = Comment.create(book_id: book_04.id, reader_id: johnny.id, rating: 8
 comment_03 = Comment.create(book_id: book_05.id, reader_id: morty.id, rating: 10, worth_the_read: false, comment_body: "Am, am I Sisyphus? Is everyone Sisyphus? Rick, did you trap me inside a Ruby program?")
 comment_04 = Comment.create(book_id: book_02.id, reader_id: rick.id, rating: 2, worth_the_read: false, comment_body: "Tyson approaches Astrophysics with the tepid vigor of a leaky faucet. I mean what what what is this every single scientist that discovers a boson energy transfer particle get a book series? What about me- where's my book series???")
 comment_05 = Comment.create(book_id: book_11.id, reader_id: charlie.id, rating: 104, worth_the_read: true, comment_body: "Many words fit between tree pages and then end. Brilliant.")
+
+recommendation_01 = Recommendation.create(author_id: s_king.id, book_id: book_06.id, reason_for_recommendation: "It's the only horror I dare not touch. The extreme anguish of spending eternity in a hotel room with my wife and her sister.")
+recommendation_02 = Recommendation.create(author_id: n_tyson.id, book_id: book_11.id, reason_for_recommendation: "Little known fact about me, I love whales. This book? About a great one. Top 5 Whales. All time.")
+recommendation_03 = Recommendation.create(author_id: a_camus.id, book_id: book_13.id, reason_for_recommendation: "If Mersault kept a philosophical journal this would be it.")
+recommendation_04 = Recommendation.create(author_id: a_ginsberg.id, book_id: book_08.id, reason_for_recommendation: "I have never felt closer to a character than reading about Private Orr. Never.")
+recommendation_05 = Recommendation.create(author_id: c_petzold.id, book_id: book_08.id, reason_for_recommendation: "If I could write, I mean I am a writer but like of code, but if i could 'write', this is what I would write.")
