@@ -1,8 +1,11 @@
 
 class CommandLineInterface
 
-  def greet_and_author_query
+  def greet
     puts "Welcome to Mibrary, your personal library app!"
+  end
+
+  def author_query
     puts "To get you started with your search, just enter an Author Name, and we'll check out for you if its in our library."
     puts "Make sure you use proper capitalization, like for example 'Stephen King', or 'Neil DeGrasse Tyson'."
   end
@@ -40,13 +43,15 @@ class CommandLineInterface
   end
 
   def immediate_follow_up_of_second_query_with_book_comments
-    puts "And even though you didn't ask, we felt it was important to supply yourself with comments that other readers (like yourself) left for this book."
+    puts "Whenever you're ready, hit enter for the comments related to this book."
+    gets.strip
   end
 
 
 
   def run
-    greet_and_author_query
+    greet
+    author_query
     author_name = gets.chomp.to_s
     author = Author.find_by(name: author_name)
     show_books(author.books)
@@ -66,7 +71,7 @@ class CommandLineInterface
     if resp == "Y" || resp == "y" || resp == "Yes" || resp == 'yes'
       run
     else
-    end 
+    end
   end
 
 end
