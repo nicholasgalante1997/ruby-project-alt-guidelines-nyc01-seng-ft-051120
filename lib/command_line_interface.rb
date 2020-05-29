@@ -3,6 +3,12 @@ class CommandLineInterface
 
   def greet
     puts "Welcome to Mibrary, your personal library app!"
+    puts "Would you like to search for an Author or a Book?"
+  end
+
+  def book_query
+    puts "To get you started, just enter a Book Title, and we'll take a look and see if its in our digital library."
+    puts "Make sure you use proper capitalization, like for example 'The Shining', or 'Moby Dick'."
   end
 
   def author_query
@@ -50,7 +56,9 @@ class CommandLineInterface
 
 
   def run
-    greet
+  greet
+  initial_branch = gets.strip
+  if initial_branch == "Author" || initial_branch == "author"
     author_query
     author_name = gets.chomp.to_s
     author = Author.find_by(name: author_name)
@@ -62,10 +70,18 @@ class CommandLineInterface
     show_book_info(book)
     immediate_follow_up_of_second_query_with_book_comments
     pp book.comments
+  elsif initial_branch == "Book" || initial_branch == 'book'
+    book_query
+    book_title = gets.chomp.to_s
+    book_search_one = Book.find_by(title: book_title)
+    show_book_info(book_search_one)
+    puts book_search_one.author.name
+  else
+  end
   end
 
   def repeat
-    puts "Would you like to search for another Author?"
+    puts "Would you like to search for another Author or Book?"
     puts "[Y/n]"
     resp = gets.strip
     if resp == "Y" || resp == "y" || resp == "Yes" || resp == 'yes'
