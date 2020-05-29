@@ -55,6 +55,7 @@ class CommandLineInterface
 
 
 
+
   def run
   greet
   initial_branch = gets.strip
@@ -76,7 +77,22 @@ class CommandLineInterface
     book_search_one = Book.find_by(title: book_title)
     show_book_info(book_search_one)
     puts book_search_one.author.name
+    puts "Whenever you're ready, just hit the enter key for some information on the author."
+    gets.strip
+    author_search_follow_up = book_search_one.author
+    pp author_search_follow_up
+    puts "For further books by this author, just hit enter."
+    gets.strip
+    show_books(author_search_follow_up.books)
+    second_query_for_book_info
+    resp_ = gets.strip
+    num = resp_.to_i
+    book = Book.find(num)
+    show_book_info(book)
+    immediate_follow_up_of_second_query_with_book_comments
+    pp book.comments
   else
+    "Looks like you didn't enter a viable search. Go take this time to google what 'viable' means and come back with renewed ambition."
   end
   end
 
